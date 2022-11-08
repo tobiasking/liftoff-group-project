@@ -10,6 +10,6 @@ public class HomePage {
     @RequestMapping(value="")
     @ResponseBody
     public String index(){
-        return "Hello LiftOff";
+        return "Homepage in progress";
     }
 }
