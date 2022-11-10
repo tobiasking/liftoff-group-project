@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomePage {
 
     @RequestMapping(value="")
-    @ResponseBody
     public String index(){
-        return "Hello LiftOff";
+        return "index";
     }
 }
