@@ -2,3 +2,7 @@ html {
     background: url('/images/headphonesbackground.jpg');
     background-size: cover;
 }
+div.category {
+    background-color: rgb(233, 236, 239);
+    padding: 10 10 10 10;
+}
