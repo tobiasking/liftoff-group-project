@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="registrationForm")
-public class RegisterModel {
+public class User {
 
     @Id
     @GeneratedValue
@@ -27,7 +27,7 @@ public class RegisterModel {
     private int phoneNumber;
 
 
-    public RegisterModel(int id, String userName, String password, Date dateOfBirth, String email, int phoneNumber) {
+    public User(int id, String userName, String password, Date dateOfBirth, String email, int phoneNumber) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -36,7 +36,7 @@ public class RegisterModel {
         this.phoneNumber = phoneNumber;
     }
 
-    public RegisterModel() {
+    public User() {
     }
 
 

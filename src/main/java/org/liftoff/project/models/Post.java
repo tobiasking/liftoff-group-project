@@ -22,9 +22,19 @@ public class Post {
     @Size(min = 3, max = 1600, message = "Content must be between 3 and 1600 characters.")
     private String content;
 
-    public Post(String title, String content) {
+    /*@ManyToOne
+    @NotNull(message = "Category is required")
+    private Category category;
+
+    @ManyToOne
+    private User user;
+    */
+
+    public Post(String title, String content/*, Category category, User user*/) {
         this.title = title;
         this.content = content;
+        /*this.category = category;
+        this.user = user;*/
     }
 
     public Post() {}
