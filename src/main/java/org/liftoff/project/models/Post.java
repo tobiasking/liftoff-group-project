@@ -3,6 +3,7 @@ package org.liftoff.project.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
@@ -22,19 +23,19 @@ public class Post {
     @Size(min = 3, max = 1600, message = "Content must be between 3 and 1600 characters.")
     private String content;
 
-    /*@ManyToOne
-    @NotNull(message = "Category is required")
-    private Category category;
-
     @ManyToOne
     private User user;
-    */
 
-    public Post(String title, String content/*, Category category, User user*/) {
+    /*@ManyToOne
+    @NotNull(message = "Category is required")
+    private Category category;*/
+
+
+    public Post(String title, String content,/*, Category category,*/ User user) {
         this.title = title;
         this.content = content;
-        /*this.category = category;
-        this.user = user;*/
+        //this.category = category;
+        this.user = user;
     }
 
     public Post() {}
@@ -57,6 +58,14 @@ public class Post {
 
     public int getId() {
         return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
