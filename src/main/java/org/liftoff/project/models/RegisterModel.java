@@ -1,4 +1,4 @@
-package org.liftoff.project.Models;
+package org.liftoff.project.models;
 
 import javax.persistence.*;
 import java.util.Date;

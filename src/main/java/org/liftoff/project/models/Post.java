@@ -1,4 +1,4 @@
-package org.liftoff.project.Models;
+package org.liftoff.project.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

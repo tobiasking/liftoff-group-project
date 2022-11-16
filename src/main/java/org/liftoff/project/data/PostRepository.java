@@ -1,6 +1,6 @@
 package org.liftoff.project.data;
 
-import org.liftoff.project.Models.Post;
+import org.liftoff.project.models.Post;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
