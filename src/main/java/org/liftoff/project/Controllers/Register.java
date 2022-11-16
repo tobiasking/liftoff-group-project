@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Register {
 
 
-    @Autowired
-    RegisterModel registerModel;
+
 
     @RequestMapping(value="/register")
     @ResponseBody

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class Explore {
 
-    @RequestMapping(value="/explore     ")
+    @RequestMapping(value="/explore")
     @ResponseBody
     public String index(){
         return "Exploration Page";
