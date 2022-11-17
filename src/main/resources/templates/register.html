@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Register</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <style type= "style/css">
+        .form-signup{
+        margin: 0 auto;
+        max-width: 300px;
+        }
+    </style>
+
+    <style type="style/css">
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <form class="form-signup">
+<h1 style="text-align: center">Music Forum</h1>
+        <br>
+        <h4 style="text-align: center">NAVIGATION BAR</h4>
+        <br>
+<p style="text-align: center">Register for your very account!</p>
+        <div class="form-group">
+            <div class="row">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <input type="submit" class="btn btn-success" name="" value="Signup">
+        <p>Already have an account? <a href="/login">Login here.</a></p>
+    </form>
+</div>
+
+</body>
+</html>
