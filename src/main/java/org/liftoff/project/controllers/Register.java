@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Register {
 
     @RequestMapping(value="/register")
-    @ResponseBody
     public String index(){
-        return "Registration Page";
+        return "register";
     }
 }
