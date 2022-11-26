@@ -16,12 +16,9 @@ public class Category {
     @Size(min = 3, max = 100, message = "Category name must be between 3 and 100 characters.")
     private String categoryName;
 
-    @OneToMany
-    private Post post;
 
-    public Category(String categoryName, Post post){
+    public Category(String categoryName){
         this.categoryName = categoryName;
-        this.post = post;
     }
 
     public Category(){}
@@ -32,14 +29,6 @@ public class Category {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
     }
 
     public int getId() {
