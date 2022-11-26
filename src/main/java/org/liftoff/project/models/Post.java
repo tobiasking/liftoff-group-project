@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -26,15 +27,15 @@ public class Post {
     @ManyToOne
     private User user;
 
-    /*@ManyToOne
+    @ManyToOne
     @NotNull(message = "Category is required")
-    private Category category;*/
+    private Category category;
 
 
-    public Post(String title, String content,/*, Category category,*/ User user) {
+    public Post(String title, String content, Category category, User user) {
         this.title = title;
         this.content = content;
-        //this.category = category;
+        this.category = category;
         this.user = user;
     }
 
