@@ -1,5 +1,6 @@
 package org.liftoff.project.controllers;
 
+import org.liftoff.project.data.CategoryRepository;
 import org.liftoff.project.data.PostRepository;
 import org.liftoff.project.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class PostController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @GetMapping("create")
     @ResponseBody
