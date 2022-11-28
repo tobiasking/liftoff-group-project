@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${User.userName}"></title>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <section style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <div th:insert="fragments :: navbar"></div>
+                <section style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Forum</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                    </ol>
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="images/avatar.png" alt="avatar"
+                             class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5
+                                class="my-3" th:text="'Username:' + '  ' + '@' + ${User.userName}"></h5>
+                        <div class="forum-buttons">
+                            <button class="button-55"><a href="#"><strong>Get notifications</strong></a></button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="mb-0">Date of Birth</p>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="text-muted mb-0" th:text="${User.dateOfBirth}"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="text-muted mb-0" th:text="${User.email}"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="mb-0">Phone Number</p>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="text-muted mb-0" th:text="${User.phoneNumber}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4 mb-md-0">
+                    <div class="card-body">
+                        <p class="mb-4"><span class="text-primary ">User Bio</span> </p>
+                        <p class="mb-1" style="font-size: .70">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-6 ml-auto">
+            <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                    <p class="mb-4"><span class="text-primary font-italic me-1">Recent Thread Activity</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+     </div>
+  </div>
+</section>
+</body>
+</html>
