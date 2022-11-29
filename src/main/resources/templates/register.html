@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Form Register</title>
 
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <style type= "style/css">
         .form-signup{
@@ -21,9 +22,11 @@
     <form class="form-signup">
 <h1 style="text-align: center">Music Forum</h1>
         <br>
-        <h4 style="text-align: center">NAVIGATION BAR</h4>
+
+        <div th:insert="fragments :: navbar"></div>
+
         <br>
-<p style="text-align: center">Register for your very account!</p>
+<p style="text-align: center">Register for your very own account!</p>
         <div class="form-group">
             <div class="row">
                 <div class="form-group">
