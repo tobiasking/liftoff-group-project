@@ -1,5 +1,7 @@
 package org.liftoff.project.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,7 +18,7 @@ public class User {
     private String userName;
 
     @Column(name="user_password")
-    private String password;
+    private String pwHash;
 
     @Column(name="date_of_birth")
     private Date dateOfBirth;
@@ -26,11 +28,14 @@ public class User {
     @Column(name="user_phone_number")
     private int phoneNumber;
 
+    //initialized variable for verifying and creating hashPW
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User(int id, String userName, String password, Date dateOfBirth, String email, int phoneNumber) {
         this.id = id;
         this.userName = userName;
-        this.password = password;
+        // method to encode the PW field
+        this.pwHash = encoder.encode(password);
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -57,11 +62,11 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return pwHash;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.pwHash = password;
     }
 
     public Date getDateOfBirth() {
@@ -86,6 +91,11 @@ public class User {
 
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    //Add a method to check password values
+    public boolean matchedPassword(String password) {
+        return encoder.matches(password, pwHash);
     }
 }
 
