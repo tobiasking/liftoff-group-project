@@ -5,26 +5,26 @@ import java.util.Date;
 
 
 @Entity
-@Table(name="registrationForm")
+@Table(name="registration_form")
 public class User extends AbstractEntity{
 
-    @Column(name="user_name")
+    @Column(name="name")
     private String userName;
 
-    @Column(name="user_password")
+    @Column(name="password")
     private String password;
 
     @Column(name="date_of_birth")
     private Date dateOfBirth;
 
-    @Column(name="user_email")
+    @Column(name="email")
     private String email;
 
-    @Column(name="user_phone_number")
-    private int phoneNumber;
+    @Column(name="phone_number")
+    private String phoneNumber;
 
 
-    public User(String userName, String password, Date dateOfBirth, String email, int phoneNumber) {
+    public User(String userName, String password, Date dateOfBirth, String email, String phoneNumber) {
         this.userName = userName;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -68,11 +68,11 @@ public class User extends AbstractEntity{
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
