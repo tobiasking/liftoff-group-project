@@ -6,12 +6,8 @@ import java.util.Date;
 
 @Entity
 @Table(name="registrationForm")
-public class User {
+public class User extends AbstractEntity{
 
-    @Id
-    @GeneratedValue
-    @Column(name="user_id")
-    private int id;
     @Column(name="user_name")
     private String userName;
 
@@ -23,12 +19,12 @@ public class User {
 
     @Column(name="user_email")
     private String email;
+
     @Column(name="user_phone_number")
     private int phoneNumber;
 
 
-    public User(int id, String userName, String password, Date dateOfBirth, String email, int phoneNumber) {
-        this.id = id;
+    public User(String userName, String password, Date dateOfBirth, String email, int phoneNumber) {
         this.userName = userName;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -39,14 +35,6 @@ public class User {
     public User() {
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUserName() {
         return userName;
@@ -87,5 +75,11 @@ public class User {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return userName;
+    }
+
 }
 

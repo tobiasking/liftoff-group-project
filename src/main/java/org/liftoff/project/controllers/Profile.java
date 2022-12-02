@@ -4,7 +4,6 @@ import org.liftoff.project.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.Date;
 
 @Controller
 public class Profile {
@@ -13,7 +12,7 @@ public class Profile {
     @RequestMapping(value="/profile")
     public String profile(Model model){
 
-        model.addAttribute("User",  new User(1, "Test", "test123", null,  "test@test.com", 1234567890));
+        model.addAttribute("User",  new User("Test", "test123", null,  "test@test.com", 1234567890));
         return "profile";
     }
 //    ----!---- Maybe something like this ----!----
