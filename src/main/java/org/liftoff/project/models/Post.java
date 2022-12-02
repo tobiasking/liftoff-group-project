@@ -1,19 +1,13 @@
 package org.liftoff.project.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Objects;
 
 @Entity
-public class Post {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Post extends AbstractEntity{
 
     @NotBlank(message = "Title is required.")
     @Size(min = 3, max = 100, message = "Title must be between 3 and 100 characters.")
@@ -26,15 +20,15 @@ public class Post {
     @ManyToOne
     private User user;
 
-    /*@ManyToOne
+    @ManyToOne
     @NotNull(message = "Category is required")
-    private Category category;*/
+    private Category category;
 
 
-    public Post(String title, String content,/*, Category category,*/ User user) {
+    public Post(String title, String content, Category category, User user) {
         this.title = title;
         this.content = content;
-        //this.category = category;
+        this.category = category;
         this.user = user;
     }
 
@@ -56,10 +50,6 @@ public class Post {
         this.content = content;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public User getUser() {
         return user;
     }
@@ -68,21 +58,18 @@ public class Post {
         this.user = user;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return title;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Post post = (Post) o;
-        return id == post.id;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

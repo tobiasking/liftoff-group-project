@@ -8,12 +8,8 @@ import java.util.Date;
 
 @Entity
 @Table(name="registrationForm")
-public class User {
+public class User extends AbstractEntity{
 
-    @Id
-    @GeneratedValue
-    @Column(name="user_id")
-    private int id;
     @Column(name="user_name")
     private String userName;
 
@@ -25,14 +21,14 @@ public class User {
 
     @Column(name="user_email")
     private String email;
+
     @Column(name="user_phone_number")
     private int phoneNumber;
 
     //initialized variable for verifying and creating hashPW
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public User(int id, String userName, String password, Date dateOfBirth, String email, int phoneNumber) {
-        this.id = id;
+    public User(String userName, String password, Date dateOfBirth, String email, int phoneNumber) {
         this.userName = userName;
         // method to encode the PW field
         this.pwHash = encoder.encode(password);
@@ -44,14 +40,6 @@ public class User {
     public User() {
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUserName() {
         return userName;
@@ -93,9 +81,17 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+
     //Add a method to check password values
     public boolean matchedPassword(String password) {
         return encoder.matches(password, pwHash);
     }
+
+    @Override
+    public String toString() {
+        return userName;
+    }
+
+
 }
 
