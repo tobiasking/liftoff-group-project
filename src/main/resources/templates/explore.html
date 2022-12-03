@@ -23,6 +23,10 @@
             <th>Category</th>
         </tr>
         </thead>
+        <tr th:each="post: ${posts}"></tr>
+            <td th:text = "${post.title}"></td>
+            <td th:text = "${post.user.userName}"></td>
+            <td th:text = "${post.category.categoryName}"></td>
         <tbody>
 
         </tbody>
