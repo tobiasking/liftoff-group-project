@@ -2,19 +2,29 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Explore</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 </head>
 <body class = "container" style="padding-bottom:75px;background:whitesmoke">
-
-<h1 style="text-align:center">Music Forum</h1>
+<h1 style="text-align:center">Explore</h1>
 
 <div th:insert="fragments :: navbar"></div>
 
-<div th:replace="fragments :: login"></div>
+<table class = "tablebg" cellspacing = "1" width = "100%">
+    <thead>
+    <tr>
+        <th>Post</th>
+        <th>User</th>
+        <th>Category</th>
+        <th>Go to Thread</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
 
 </body>
 </html>
