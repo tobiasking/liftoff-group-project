@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Explore</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body class = "container" style="padding-bottom:75px;background:whitesmoke">
 
@@ -29,11 +29,12 @@
             <td th:text = ${postContent}></td>
         </tr>
     </table>
+</div>
 
-    <button class="btn btn-primary" ><a style= "color:white" th:href="@{/explore}">Back to Explore</a></button>
+<div class="forum-buttons">
+    <button class="button-55" ><a th:href="@{/explore}"><strong>Back to Explore</strong></a></button>
 
-    <button class="btn btn-primary">Add to Thread</button>
-
+    <button class="button-55"><strong>Add to Thread</strong></button>
 </div>
 
 </body>
