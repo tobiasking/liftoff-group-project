@@ -20,8 +20,7 @@ public class Explore {
 
     @GetMapping
     public String displayMostRecentPosts(Model model){
-        model.addAttribute("categories", categoryRepository.findAll());
-        model.addAttribute("posts", postRepository.findAll());
+        model.addAttribute("posts", postRepository.findByOrderByIdDesc());
         return "explore";
     }
 }

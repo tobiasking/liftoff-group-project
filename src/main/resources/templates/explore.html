@@ -22,6 +22,7 @@
     <table class = "table table-bordered table-hover" style="text-align:center" cellspacing = "1" width = "100%">
         <thead class="thead-light">
         <tr>
+            <th>Post ID</th>
             <th>Post</th>
             <th>User</th>
             <th>Category</th>
@@ -30,6 +31,7 @@
 
         <th:block th:each="post : ${posts}">
             <tr>
+                <td th:text = "${post.id}"></td>
                 <td th:text = "${post.title}"></td>
                 <td th:text = "${post.user.userName}"></td>
                 <td th:text = "${post.category.categoryName}"></td>
