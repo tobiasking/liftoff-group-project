@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Explore</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -19,7 +19,7 @@
 <div>
     <p>Explore what our community is saying.</p>
 
-    <table class = "table table-bordered table-hover" style="text-align:center" cellspacing = "1" width = "100%">
+    <table class = "table table-bordered" style="text-align:center" cellspacing = "1" width = "100%">
         <thead class="thead-light">
         <tr>
             <th th:text="${header}"></th>
@@ -30,7 +30,9 @@
         </tr>
     </table>
 
-    <button><a class="nav-link" th:href="@{/explore}">Back to Explore</a></button>
+    <button class="btn btn-primary" ><a style= "color:white" th:href="@{/explore}">Back to Explore</a></button>
+
+    <button class="btn btn-primary">Add to Thread</button>
 
 </div>
 
