@@ -9,15 +9,15 @@
 </head>
 <body class = "container" style="padding-bottom:75px;background:whitesmoke">
 
+<h1 style="text-align:center">Music Forum</h1>
+
 <div th:insert="fragments :: navbar"></div>
 
 
 <br>
 
 <div>
-    <h1 style="text-align:center">Explore What Our Community is Saying</h1>
-
-    <br>
+    <p>Explore what our community is saying.</p>
 
     <table class = "table table-bordered table-hover" style="text-align:center" cellspacing = "1" width = "100%">
         <thead class="thead-light">
@@ -32,7 +32,7 @@
         <th:block th:each="post : ${posts}">
             <tr>
                 <td th:text = "${post.id}"></td>
-                <td th:text = "${post.title}"></td>
+                <td><a th:href = "'/explore/content?postId='+ ${post.id}" th:text = "${post.title}"></a></td>
                 <td th:text = "${post.user.userName}"></td>
                 <td th:text = "${post.category.categoryName}"></td>
             </tr>

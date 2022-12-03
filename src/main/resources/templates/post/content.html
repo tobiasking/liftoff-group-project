@@ -2,11 +2,10 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Explore</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 </head>
 <body class = "container" style="padding-bottom:75px;background:whitesmoke">
 
@@ -14,9 +13,26 @@
 
 <div th:insert="fragments :: navbar"></div>
 
+
 <br>
 
-<div th:replace="fragments :: login"></div>
+<div>
+    <p>Explore what our community is saying.</p>
+
+    <table class = "table table-bordered table-hover" style="text-align:center" cellspacing = "1" width = "100%">
+        <thead class="thead-light">
+        <tr>
+            <th th:text="${header}"></th>
+        </tr>
+        </thead>
+        <tr>
+            <td th:text = ${postContent}></td>
+        </tr>
+    </table>
+
+    <button><a class="nav-link" th:href="@{/explore}">Back to Explore</a></button>
+
+</div>
 
 </body>
 </html>
