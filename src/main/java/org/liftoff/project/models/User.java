@@ -93,5 +93,8 @@ public class User extends AbstractEntity{
     }
 
 
+    public boolean isMatchingPassword(String password) {
+        return false;
+    }
 }
 
