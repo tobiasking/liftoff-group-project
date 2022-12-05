@@ -138,8 +138,8 @@ public class Authentication {
     }
 }
 
-    @GetMapping("/logout")
+    @GetMapping(value="/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
-        return "redirect:/login";
+        return "redirect/login";
     }
