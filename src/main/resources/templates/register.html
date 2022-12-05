@@ -86,6 +86,18 @@
                             <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password">
                         </label>
                     </div>
+                <div class="form-group">
+                    <label>DateOfBirth
+                        <input class="form-control" th:field="${registerFormDTO.dateOfBirth}">
+                    </label>
+                    <p class="error" th:errors="${registerFormDTO.dateOfBirth}"></p>
+                </div>
+                <div class="form-group">
+                    <label>PhoneNumber
+                        <input class="form-control" th:field="${registerFormDTO.phoneNumber}">
+                    </label>
+                    <p class="error" th:errors="${registerFormDTO.phoneNumber}"></p>
+                </div>
 
 
 

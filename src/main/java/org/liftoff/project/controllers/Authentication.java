@@ -19,7 +19,7 @@ import java.util.Optional;
 @Controller
 public class Authentication {
 
-    //create a UserRepository instance to handle User model objects with this controller
+    //create a UserRepository instance to handle User model objects with the controller
     @Autowired
     UserRepository userRepository;
 
@@ -97,11 +97,18 @@ public class Authentication {
             model.addAttribute("title", "Register");
             return "register";
         }
-        errors.rejectValue("username", "username.alreadyexists",
-                "A user with that username already exists");
+//        errors.rejectValue("username", "username.alreadyexists",
+//                "A user with that username already exists");
 
         //create a new user object to store in the DB
-        User newUser = new User(registerDTO.getUsername(), registerDTO.getPassword());
+        User newUser = new User( registerDTO.getUsername(), registerDTO.getPassword(),  password,
+                 registerDTO.getDateOfbirth(),  email, phoneNumber);
+                this.userName = username;
+                this.password = password;
+                this.dateOfBirth = dateOfBirth;
+                this.email = email;
+                this.phoneNumber = phoneNumber;
+
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -115,8 +122,8 @@ public class Authentication {
     final String userSessionKey = "user";
 
 
-    //User ID getter
-    public User getUserFromSession (HttpSession session){
+
+    public User getUserFromSession (HttpSession session, User user){
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         if (userId == null) {
             return null;
