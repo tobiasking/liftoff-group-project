@@ -27,3 +27,5 @@ Current functions
     -Diego Colonia
     -Jerihmy Hickson
     -Toby King
+
+Part of a Group Project completed during the course of LaunchCode's LiftOff Program following the completion of the JavaScript/Java track LC101 development bootcamp. 
