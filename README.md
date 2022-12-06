@@ -22,7 +22,7 @@ User will be able to create a persistent profile, post new content and tag them 
 
 ## Contributors 
     -Emily Holzman
-    -Shamus 
+    -Shamus Hackett 
     -Diego Colonia
     -Jerihmy Hickson
     -Toby King
