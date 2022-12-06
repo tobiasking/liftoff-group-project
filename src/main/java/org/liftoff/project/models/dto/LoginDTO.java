@@ -55,6 +55,7 @@ public class LoginDTO {
     }
 
     public Date getDateOfBirth() {
+
         return dateOfBirth;
     }
 
@@ -62,18 +63,22 @@ public class LoginDTO {
         this.dateOfBirth = dateOfBirth;
     }
     public String getEmail() {
+
         return email;
     }
 
     public void setEmail(String email) {
+
         this.email = email;
     }
 
     public Integer getPhoneNumber() {
+
         return phoneNumber;
     }
 
     public void setPhoneNumber(Integer phoneNumber) {
+
         this.phoneNumber = phoneNumber;
     }
 

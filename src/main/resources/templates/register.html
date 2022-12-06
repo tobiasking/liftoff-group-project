@@ -23,27 +23,27 @@
     <form class="form-signup">
 <h1 style="text-align: center">Music Forum</h1>
         <br>
-<<<<<<< HEAD
+<!--<<<<<<< HEAD-->
 
-        <div th:insert="fragments :: navbar"></div>
+<!--        <div th:insert="fragments :: navbar"></div>-->
 
-        <br>
-<p style="text-align: center">Register for your very own account!</p>
-        <div class="form-group">
-            <div class="row">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="username" placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="Email Address">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
-                </div>
-=======
+<!--        <br>-->
+<!--<p style="text-align: center">Register for your very own account!</p>-->
+<!--        <div class="form-group">-->
+<!--            <div class="row">-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" class="form-control" name="username" placeholder="Username">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="email" class="form-control" name="email" placeholder="Email Address">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="password" class="form-control" name="password" placeholder="Password">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">-->
+<!--                </div>-->
+<!--=======-->
         <div th:insert="fragments :: navbar"></div>
         <br>
 <p style="text-align: center">Register for your very own account!</p>
@@ -66,9 +66,9 @@
 
                     <div class="form-group">
                     <label>Username
-                        <input class="form-control" th:field="${registerFormDTO.username}">
+                        <input class="form-control" th:field="${registerDTO.username}">
                     </label>
-                        <p class="error" th:errors="${registerFormDTO.username}"></p>
+                        <p class="error" th:errors="${registerDTO.username}"></p>
                         </div>
                     <div class="form-group">
                         <label>Email
@@ -77,26 +77,26 @@
                     </div>
                     <div class="form-group">
                         <label>Password
-                            <input class="form-control" th:field="${registerFormDTO.password}" type="password">
+                            <input class="form-control" th:field="${registerDTO.password}" type="password">
                         </label>
-                        <p class="error" th:errors="${registerFormDTO.password}"></p>
+                        <p class="error" th:errors="${registerDTO.password}"></p>
                     </div>
                     <div class="form-group">
                         <label>Verify Password
-                            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password">
+                            <input class="form-control" th:field="${registerDTO.verifyPassword}" type="password">
                         </label>
                     </div>
                 <div class="form-group">
                     <label>DateOfBirth
-                        <input class="form-control" th:field="${registerFormDTO.dateOfBirth}">
+                        <input class="form-control" th:field="${registerDTO.dateOfBirth}">
                     </label>
-                    <p class="error" th:errors="${registerFormDTO.dateOfBirth}"></p>
+                    <p class="error" th:errors="${registerDTO.dateOfBirth}"></p>
                 </div>
                 <div class="form-group">
                     <label>PhoneNumber
-                        <input class="form-control" th:field="${registerFormDTO.phoneNumber}">
+                        <input class="form-control" th:field="${registerDTO.phoneNumber}">
                     </label>
-                    <p class="error" th:errors="${registerFormDTO.phoneNumber}"></p>
+                    <p class="error" th:errors="${registerDTO.phoneNumber}"></p>
                 </div>
 
 

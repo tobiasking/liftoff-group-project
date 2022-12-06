@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Optional;
+
 @Controller
 public class Authentication {
 
@@ -26,23 +26,23 @@ public class Authentication {
     private static final String userSessionKey = "user";
 
 
-
-    @GetMapping(value="/register")
-    public String displayRegistrationForm(Model model){
+    @GetMapping(value = "/register")
+    public String displayRegistrationForm(Model model) {
         model.addAttribute(new RegisterDTO());
         model.addAttribute("title", "register");
         return "register";
     }
-    @PostMapping(value="/login")
+
+    @PostMapping(value = "/login")
     public String processLoginForm(@ModelAttribute @Valid LoginDTO loginDTO,
                                    Errors errors, HttpServletRequest request,
-                                   Model model){
+                                   Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
             return "login";
         }
 
-        User theUser = userRepository.findByUsername(loginDTO.getUsername());
+        User theUser = userRepository.findByUserName(loginDTO.getUsername());
 
 
         if (theUser == null) {
@@ -68,85 +68,85 @@ public class Authentication {
     private void setUserInSession(HttpSession session, User theUser) {
     }
 
-    @GetMapping(value="/login")
-    public String displayLoginForm(Model model){
+    @GetMapping(value = "/login")
+    public String displayLoginForm(Model model) {
         model.addAttribute(new LoginDTO());
         model.addAttribute("title", "Log In");
         return "login";
     }
-@PostMapping(value="/register")
+
+    @PostMapping(value = "/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterDTO registerDTO,
                                           Errors errors, HttpServletRequest request,
                                           Model model) {
-    if (errors.hasErrors()) {
-        model.addAttribute("title", "Register");
-        return "register";
-
-    }
-    User existingUser = userRepository.findByUsername(registerDTO.getUsername());
-
-    if (existingUser != null) {
-        errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
-        model.addAttribute("title", "Register");
-        return "register";
-
-        String password = registerDTO.getPassword();
-        String verifyPassword = registerDTO.getVerifyPassword();
-        if (!password.equals(verifyPassword)) {
-            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+        if (errors.hasErrors()) {
             model.addAttribute("title", "Register");
             return "register";
+
         }
+        User existingUser = userRepository.findByUserName(registerDTO.getUsername());
+
+        if (existingUser != null) {
+            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
+            model.addAttribute("title", "Register");
+
+
+            String password = registerDTO.getPassword();
+            String verifyPassword = registerDTO.getVerifyPassword();
+            if (!password.equals(verifyPassword)) {
+                errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+                model.addAttribute("title", "Register");
+                return "register";
+            }
 //        errors.rejectValue("username", "username.alreadyexists",
 //                "A user with that username already exists");
 
-        //create a new user object to store in the DB
-        User newUser = new User( registerDTO.getUsername(), registerDTO.getPassword(),  password,
-                 registerDTO.getDateOfbirth(),  email, phoneNumber);
-                this.userName = username;
-                this.password = password;
-                this.dateOfBirth = dateOfBirth;
-                this.email = email;
-                this.phoneNumber = phoneNumber;
-
-        userRepository.save(newUser);
-        setUserInSession(request.getSession(), newUser);
-
-        return "redirect:";
-    }
+            //create a new user object to store in the DB
+            User newUser = new User(registerDTO.getUsername(), registerDTO.getPassword(),
+                    registerDTO.getDateOfBirth(), registerDTO.getEmail(), registerDTO.getPhoneNumber());
 
 
-    //Session handlers...
+            userRepository.save(newUser);
+            setUserInSession(request.getSession(), newUser);
 
-    //variable for storing user ID
-    final String userSessionKey = "user";
-
-
-
-    public User getUserFromSession (HttpSession session, User user){
-        Integer userId = (Integer) session.getAttribute(userSessionKey);
-        if (userId == null) {
-            return null;
+            return "redirect:";
         }
 
-        Optional<User> user = userRepository.findById(userId);
 
-        // conditional
-        if (user.isEmpty()) {
-            return null;
-        }
-        return user.get();
-    }
+        //Session handlers...
+
+        //variable for storing user ID
+        final String userSessionKey = "user";
 
 
-    //User ID setter
-    private static void setUserInSession (HttpSession session, User user){
-        session.setAttribute(userSessionKey, user.getId());
+//    public User getUserFromSession (HttpSession session, User user){
+//        Integer userId = (Integer) session.getAttribute(userSessionKey);
+//        if (userId == null) {
+//            return null;
+//        }
+//
+//        Optional<User> user = userRepository.findById(userId);
+//
+//        // conditional
+//        if (user.isEmpty()) {
+//            return null;
+//        }
+//        return user.get();
+//    }
+//
+//
+//    //User ID setter
+//    private static void setUserInSession (HttpSession session, User user){
+//        session.setAttribute(userSessionKey, user.getId());
+//    }
+//}
+//
+//    @GetMapping(value="/logout")
+//    public String logout(HttpServletRequest request){
+//        request.getSession().invalidate();
+//        return "redirect/login";
+//    }
+//
+        return "register";
     }
 }
-
-    @GetMapping(value="/logout")
-    public String logout(HttpServletRequest request){
-        request.getSession().invalidate();
-        return "redirect/login";
-    }
