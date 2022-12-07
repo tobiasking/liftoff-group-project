@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a New Post</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body class = "container" style="padding-bottom:75px;background:whitesmoke">
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<h1 style="text-align:center">Music Forum</h1>
+
+<div th:insert="fragments :: navbar"></div>
+
+<form method="post" th:action="@{/#]}" >
+    <div>
+        <p>Category:</p>
+        <select name="category" required>
+            <Option value="Category 1">Category 1</Option>
+            <Option value="Category 2">Category 2</Option>
+            <Option value="Category 3">Category 3</Option>
+        </select>
+    </div>
+
+    <div>
+        <p>Thread Title:</p>
+        <input type="text" name="title"  size="100" required>
+
+    </div>
+    <br>
+    <div>
+        <p>Thread Text:</p>
+        <textarea name="content" rows=20 cols=100 required></textarea>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Submit Thread" />
+</form>
+
+
+
+</body>
+</html>
