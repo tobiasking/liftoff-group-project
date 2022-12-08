@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
     <title>Explore</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  </head>
-  <body class="container" style="padding-bottom: 75px; background: whitesmoke">
-    <h1 style="text-align: center">Music Forum</h1>
+</head>
+<body class = "container" style="padding-bottom:75px;background:whitesmoke">
 
-    <div th:insert="fragments :: navbar"></div>
+<h1 style="text-align:center">Music Forum</h1>
 
-    <br />
+<div th:insert="fragments :: navbar"></div>
 
-    <div>
-      <p>Explore what our community is saying.</p>
-      <form action="/explore-page" method="post">
-        <div th:text="'The button has been clicked ' + ${counter}"></div>
-        <input type="submit" value="Click Me" />
-      </form>
-    </div>
-  </body>
+
+<br>
+
+<div>
+    <p>Explore what our community is saying.</p>
+
+    <form action="/explore-page" method="post">
+        <div th:text="'The button has been clicked ' + ${counter} + ' times.'"></div>
+        <input type="submit" value="Click Me">
+    </form>
+</div>
+
+</body>
 </html>
