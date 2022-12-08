@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class Authentication {
@@ -50,6 +51,9 @@ public class Authentication {
             model.addAttribute("title", "Log In");
 
             String password = loginDTO.getPassword();
+
+
+            // Password verification process
 
             if (!theUser.isMatchingPassword(password)) {
                 errors.rejectValue("password", "password.invalid", "Invalid password");
@@ -98,13 +102,13 @@ public class Authentication {
                 model.addAttribute("title", "Register");
                 return "register";
             }
-//        errors.rejectValue("username", "username.alreadyexists",
-//                "A user with that username already exists");
+        errors.rejectValue("username", "username.alreadyexists",
+                "A user with that username already exists");
 
             //create a new user object to store in the DB
+
             User newUser = new User(registerDTO.getUsername(), registerDTO.getPassword(),
                     registerDTO.getDateOfBirth(), registerDTO.getEmail(), registerDTO.getPhoneNumber());
-
 
             userRepository.save(newUser);
             setUserInSession(request.getSession(), newUser);
@@ -119,34 +123,35 @@ public class Authentication {
         final String userSessionKey = "user";
 
 
-//    public User getUserFromSession (HttpSession session, User user){
-//        Integer userId = (Integer) session.getAttribute(userSessionKey);
-//        if (userId == null) {
-//            return null;
-//        }
-//
-//        Optional<User> user = userRepository.findById(userId);
-//
-//        // conditional
-//        if (user.isEmpty()) {
-//            return null;
-//        }
-//        return user.get();
-//    }
+    public User getUserFromSession (HttpSession session, User user){
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        if (userId == null) {
+            return null;
+        }
+
+        Optional<User> user = userRepository.findById(userId);
+
+        // conditional
+        if (user.isEmpty()) {
+            return null;
+        }
+        return user.get();
+    }
 //
 //
 //    //User ID setter
-//    private static void setUserInSession (HttpSession session, User user){
-//        session.setAttribute(userSessionKey, user.getId());
-//    }
+    private static void setUserInSession (HttpSession session, User user){
+        session.setAttribute(userSessionKey, user.getId());
+    }
 //}
 //
-//    @GetMapping(value="/logout")
-//    public String logout(HttpServletRequest request){
-//        request.getSession().invalidate();
-//        return "redirect/login";
-//    }
-//
+
+
         return "register";
+    }
+    @GetMapping(value="/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect/login";
     }
 }
