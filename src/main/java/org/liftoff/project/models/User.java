@@ -41,6 +41,12 @@ public class User extends AbstractEntity{
     }
 
 
+    //constructor that stores new user object to the DB
+    public User(Object registerDTOUsername, Object registerDTOPassword) {
+
+    }
+
+
     public String getUserName() {
         return userName;
     }

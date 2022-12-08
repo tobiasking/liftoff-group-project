@@ -72,6 +72,24 @@ public class Authentication {
     private void setUserInSession(HttpSession session, User theUser) {
     }
 
+
+    public User getUserFromSession (HttpSession session, User user){
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        if (userId == null) {
+            return null;
+        }
+
+        Optional<User> theUser = userRepository.findById(userId);
+
+        // conditional
+        if (theUser.isEmpty()) {
+            return null;
+        }
+        return theUser.get();
+    }
+
+
+
     @GetMapping(value = "/login")
     public String displayLoginForm(Model model) {
         model.addAttribute(new LoginDTO());
@@ -105,10 +123,14 @@ public class Authentication {
         errors.rejectValue("username", "username.alreadyexists",
                 "A user with that username already exists");
 
+
+            // use these object methods for later use ----> ,
+            //registerDTO.getDateOfBirth(), registerDTO.getEmail(), registerDTO.getPhoneNumber())
+
+
             //create a new user object to store in the DB
 
-            User newUser = new User(registerDTO.getUsername(), registerDTO.getPassword(),
-                    registerDTO.getDateOfBirth(), registerDTO.getEmail(), registerDTO.getPhoneNumber());
+            User newUser = new User(registerDTO.getUsername(), registerDTO.getPassword());
 
             userRepository.save(newUser);
             setUserInSession(request.getSession(), newUser);
@@ -119,33 +141,37 @@ public class Authentication {
 
         //Session handlers...
 
+
+
+        //BEGIN
+
         //variable for storing user ID
-        final String userSessionKey = "user";
-
-
-    public User getUserFromSession (HttpSession session, User user){
-        Integer userId = (Integer) session.getAttribute(userSessionKey);
-        if (userId == null) {
-            return null;
-        }
-
-        Optional<User> user = userRepository.findById(userId);
-
-        // conditional
-        if (user.isEmpty()) {
-            return null;
-        }
-        return user.get();
-    }
+//        final String userSessionKey = "user";
+//
+//        public User getUserFromSession (HttpSession session, User user){
+//        Integer userId = (Integer) session.getAttribute(userSessionKey);
+//        if (userId == null) {
+//            return null;
+//        }
+//
+//        Optional<User> user = userRepository.findById(userId);
+//
+//        // conditional
+//        if (user.isEmpty()) {
+//            return null;
+//        }
+//        return user.get();
+//    }
 //
 //
-//    //User ID setter
-    private static void setUserInSession (HttpSession session, User user){
-        session.setAttribute(userSessionKey, user.getId());
-    }
+//    private static void setUserInSession (HttpSession session, User user){
+//        session.setAttribute(userSessionKey, user.getId());
+//    }
+
+    //BREAK!!!
+
 //}
 //
-
 
         return "register";
     }
