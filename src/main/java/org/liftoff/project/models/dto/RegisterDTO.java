@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class RegisterDTO extends LoginDTO{
 
-    //variable
+    //variables
 
 
     @NotNull
@@ -17,7 +17,7 @@ public class RegisterDTO extends LoginDTO{
 
     @NotNull
     @NotBlank
-    @Size(min = 5, max = 30, message = "Invalid password. Must be between 5 and 30 characters.")
+    @Size(min = 10, max = 20, message = "Invalid . Must be between 10 and 20 characters.")
     private Integer phoneNumber;
 
     public Integer getPhoneNumber() {

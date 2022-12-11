@@ -31,7 +31,7 @@ public class LoginDTO {
 
 //    @NotNull
 //    @NotBlank
-//    @Size(min = 5, max = 30, message = "Invalid password. Must be between 5 and 30 characters.")
+//    @Size(min = 10, max = 30, message = "Invalid phone number. Must be between 10 and 30 characters.")
 //    private Integer phoneNumber;
 
     public String getUsername() {

@@ -49,11 +49,12 @@ public class Authentication {
         if (theUser == null) {
             errors.rejectValue("username", "user.invalid", "That username does not exist");
             model.addAttribute("title", "Log In");
+        }else {
 
             String password = loginDTO.getPassword();
 
 
-            // Password verification process
+            // Password verification
 
             if (!theUser.isMatchingPassword(password)) {
                 errors.rejectValue("password", "password.invalid", "Invalid password");
@@ -64,7 +65,7 @@ public class Authentication {
                 return "login";
             }
 
-            return "login";
+            return "index";
         }
         return "login";
     }
@@ -141,34 +142,6 @@ public class Authentication {
 
         //Session handlers...
 
-
-
-        //BEGIN
-
-        //variable for storing user ID
-//        final String userSessionKey = "user";
-//
-//        public User getUserFromSession (HttpSession session, User user){
-//        Integer userId = (Integer) session.getAttribute(userSessionKey);
-//        if (userId == null) {
-//            return null;
-//        }
-//
-//        Optional<User> user = userRepository.findById(userId);
-//
-//        // conditional
-//        if (user.isEmpty()) {
-//            return null;
-//        }
-//        return user.get();
-//    }
-//
-//
-//    private static void setUserInSession (HttpSession session, User user){
-//        session.setAttribute(userSessionKey, user.getId());
-//    }
-
-    //BREAK!!!
 
 //}
 //
