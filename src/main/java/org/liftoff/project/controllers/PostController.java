@@ -5,11 +5,13 @@ import org.liftoff.project.data.PostRepository;
 import org.liftoff.project.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("post")
 public class PostController {
 
     @Autowired
@@ -21,13 +23,15 @@ public class PostController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @RequestMapping(value="post")
-    public String post(){
+    @GetMapping("post")
+    public String displayPostForm(Model model){
+        model.addAttribute("title","Create a Post");
+        model.addAttribute("categories", CategoryRepository.);
         return "post";
     }
-    @GetMapping("create")
-    @ResponseBody
-    public String displayCreatePostForm() { return "Create a Post Page";}
+//    @GetMapping("create")
+//    @ResponseBody
+//    public String displayCreatePostForm() { return "Create a Post Page";}
 
     //@PostMapping()
     // public String processCreatePostForm() {}
