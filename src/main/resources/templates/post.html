@@ -15,25 +15,25 @@
 
 <div th:insert="fragments :: navbar"></div>
 
-<form method="post" th:action="@{/#]}" >
+<form method="post">
     <div>
         <p>Category:</p>
-        <select name="category" required>
-            <Option value="Category 1">Category 1</Option>
-            <Option value="Category 2">Category 2</Option>
-            <Option value="Category 3">Category 3</Option>
+        <select th:field="${post.category}" name="category" required>
+            <option th:each="category : ${categories}"
+                    th:value="${category.id}"
+                    th:text="${category.name}"></option>
         </select>
     </div>
 
     <div>
-        <p>Thread Title:</p>
-        <input type="text" name="title"  size="100" required>
+        <p>Post Title:</p>
+        <input th:field="${post.title}" type="text" name="title"  size="100" required>
 
     </div>
     <br>
     <div>
-        <p>Thread Text:</p>
-        <textarea name="content" rows=20 cols=100 required></textarea>
+        <p>Post Message:</p>
+        <textarea th:field="${post.content}" name="content" rows=20 cols=100 required></textarea>
     </div>
 
     <input type="submit" class="btn btn-primary" value="Submit Thread" />
