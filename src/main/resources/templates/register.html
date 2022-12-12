@@ -20,7 +20,7 @@
 </head>
 <body class = "container" style="padding-bottom:75px;background:whitesmoke">
 <div class="container">
-    <form class="form-signup">
+
 <h1 style="text-align: center">Music Forum</h1>
         <br>
 
@@ -65,17 +65,38 @@
 <!--&gt;>>>>>> 8809f7d6ef7df28f15e36258ea9a190f11929082-->
 
 
+
+<!--              user form -->
+
+               <form class="form-signup"  th:action="@{/register}"  method="post" th:object="${userRegister}">
+
                     <div class="form-group">
                     <label>Username
+
                         <input class="form-control" th:field="${registerDTO.username}">
+
                     </label>
                         <p class="error" th:errors="${registerDTO.username}"></p>
                         </div>
+
                     <div class="form-group">
                         <label>Email
-                            <input class="form-control" type="email">
+                            <input class="form-control" type="text" th:field="*{email}">
                         </label>
                     </div>
+
+                   <div class="form-group">
+                       <label>Phone number
+                           <input class="form-control" type="text" th:field="*{phoneNumber}">
+                       </label>
+                   </div>
+
+                   <div class="form-group">
+                       <label>date of birth
+                           <input class="form-control" type="date" th:field="*{dateOfBirth}">
+                       </label>
+                   </div>
+
                     <div class="form-group">
                         <label>Password
                             <input class="form-control" th:field="${registerDTO.password}" type="password">
@@ -85,6 +106,7 @@
                     <div class="form-group">
                         <label>Verify Password
                             <input class="form-control" th:field="${registerDTO.verifyPassword}" type="password">
+
                         </label>
                     </div>
                 <div class="form-group">
@@ -103,6 +125,7 @@
 
 
         <div>
+
         <input type="submit" class="btn btn-primary" name="" value="Sign Up">
         <p>Already have an account? <a href="/login">Login here.</a></p>
         </div>

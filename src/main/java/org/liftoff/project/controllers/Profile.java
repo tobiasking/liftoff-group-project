@@ -12,7 +12,7 @@ public class Profile {
     @RequestMapping(value="/profile")
     public String profile(Model model){
 
-        model.addAttribute("User",  new User("Test", "test123", null,  "test@test.com", 1234567890));
+        model.addAttribute("User",  new User("Test", "test123", null,  "test@test.com", "121233123123"));
         return "profile";
     }
 //    ----!---- Maybe something like this ----!----
