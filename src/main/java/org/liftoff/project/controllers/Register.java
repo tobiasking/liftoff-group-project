@@ -27,17 +27,17 @@ public class Register {
         return "register";
     }
 
-    @PostMapping("register")
-    public String postUserRegistration(@Valid User userRegister, Errors error){
-
-        if(error.hasErrors()){
-            return "redirect:/register";
-        }else{
-            userRepository.save(userRegister);
-        }
-
-     return "/";
-    }
+//    @PostMapping("register")
+//    public String postUserRegistration(@Valid User userRegister, Errors error){
+//
+//        if(error.hasErrors()){
+//            return "redirect:/register";
+//        }else{
+//            userRepository.save(userRegister);
+//        }
+//
+//     return "/";
+//    }
 
 
 }
