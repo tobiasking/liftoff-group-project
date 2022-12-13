@@ -27,12 +27,12 @@ public class Authentication {
     private static final String userSessionKey = "user";
 
 
-    @GetMapping(value = "/register")
-    public String displayRegistrationForm(Model model) {
-        model.addAttribute(new RegisterDTO());
-        model.addAttribute("title", "register");
-        return "register";
-    }
+//    @GetMapping(value = "/register")
+//    public String displayRegistrationForm(Model model) {
+//        model.addAttribute(new RegisterDTO());
+//        model.addAttribute("title", "register");
+//        return "register";
+//    }
 
     @PostMapping(value = "/login")
     public String processLoginForm(@ModelAttribute @Valid LoginDTO loginDTO,
@@ -98,56 +98,56 @@ public class Authentication {
         return "login";
     }
 
-    @PostMapping(value = "/register")
-    public String processRegistrationForm(@ModelAttribute @Valid RegisterDTO registerDTO,
-                                          Errors errors, HttpServletRequest request,
-                                          Model model) {
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Register");
-            return "register";
-
-        }
-        User existingUser = userRepository.findByUserName(registerDTO.getUsername());
-
-        if (existingUser != null) {
-            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
-            model.addAttribute("title", "Register");
-
-
-            String password = registerDTO.getPassword();
-            String verifyPassword = registerDTO.getVerifyPassword();
-            if (!password.equals(verifyPassword)) {
-                errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
-                model.addAttribute("title", "Register");
-                return "register";
-            }
-        errors.rejectValue("username", "username.alreadyexists",
-                "A user with that username already exists");
-
-
-            // use these object methods for later use ----> ,
-            //registerDTO.getDateOfBirth(), registerDTO.getEmail(), registerDTO.getPhoneNumber())
-
-
-            //create a new user object to store in the DB
-
-            User newUser = new User(registerDTO.getUsername(), registerDTO.getPassword());
-
-            userRepository.save(newUser);
-            setUserInSession(request.getSession(), newUser);
-
-            return "redirect:";
-        }
-
-
-        //Session handlers...
-
-
-//}
+//    @PostMapping(value = "/register")
+//    public String processRegistrationForm(@ModelAttribute @Valid RegisterDTO registerDTO,
+//                                          Errors errors, HttpServletRequest request,
+//                                          Model model) {
+//        if (errors.hasErrors()) {
+//            model.addAttribute("title", "Register");
+//            return "register";
 //
-
-        return "register";
-    }
+//        }
+//        User existingUser = userRepository.findByUserName(registerDTO.getUsername());
+//
+//        if (existingUser != null) {
+//            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
+//            model.addAttribute("title", "Register");
+//
+//
+//            String password = registerDTO.getPassword();
+//            String verifyPassword = registerDTO.getVerifyPassword();
+//            if (!password.equals(verifyPassword)) {
+//                errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+//                model.addAttribute("title", "Register");
+//                return "register";
+//            }
+//        errors.rejectValue("username", "username.alreadyexists",
+//                "A user with that username already exists");
+//
+//
+//            // use these object methods for later use ----> ,
+//            //registerDTO.getDateOfBirth(), registerDTO.getEmail(), registerDTO.getPhoneNumber())
+//
+//
+//            //create a new user object to store in the DB
+//
+//            User newUser = new User(registerDTO.getUsername(), registerDTO.getPassword());
+//
+//            userRepository.save(newUser);
+//            setUserInSession(request.getSession(), newUser);
+//
+//            return "redirect:";
+//        }
+//
+//
+//        //Session handlers...
+//
+//
+////}
+////
+//
+//        return "register";
+//    }
     @GetMapping(value="/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
