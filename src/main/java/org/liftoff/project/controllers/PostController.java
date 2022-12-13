@@ -51,16 +51,16 @@ public class PostController {
     @GetMapping("post")
     public String displayCreatePostForm(Model model) {
         model.addAttribute("title", "Create A Post");
-        model.addAttribute(new Post());
+        model.addAttribute("post",new Post());
         model.addAttribute("categories", categoryRepository.findAll());
         return "post";
     }
 
     @PostMapping("post")
-    public String processCreateEventForm(@ModelAttribute @Valid Post newPost,
+    public String processCreatePostForm(@ModelAttribute @Valid Post newPost,
                                          Errors errors, Model model) {
         if(errors.hasErrors()) {
-            model.addAttribute("title", "Create Event");
+            model.addAttribute("title", "Create Post");
             return "post";
         }
 
