@@ -1,10 +1,10 @@
 package org.liftoff.project.models;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Post extends AbstractEntity{
@@ -49,6 +49,13 @@ public class Post extends AbstractEntity{
     public void setContent(String content) {
         this.content = content;
     }
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public User getUser() {
         return user;
@@ -58,14 +65,9 @@ public class Post extends AbstractEntity{
         this.user = user;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Post> getPosts() {
+        return getPosts();
     }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     @Override
     public String toString() {
         return title;
