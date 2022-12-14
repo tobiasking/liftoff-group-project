@@ -21,12 +21,11 @@ public class Register {
     UserRepository userRepository;
 
     @RequestMapping("register")
-    public String getUserRegistration(Model model){
-        User userRegister= new User();
-        model.addAttribute("userRegister",userRegister);
+    public String getUserRegistration(Model model) {
+        User userRegister = new User();
+        model.addAttribute("userRegister", userRegister);
         return "register";
     }
-
     @PostMapping("register")
     public String postUserRegistration(@Valid User userRegister, Errors error){
 
