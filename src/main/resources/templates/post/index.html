@@ -59,7 +59,7 @@
         <select th:field="${post.category}">
             <option th:each="category : ${categories}"
                     th:value="${category.id}"
-                    th:text="${category.name}"></option>
+                    th:text="${category.categoryName}"></option>
         </select>
         </label>
     </div>
