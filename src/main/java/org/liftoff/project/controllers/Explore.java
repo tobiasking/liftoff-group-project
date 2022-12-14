@@ -45,4 +45,10 @@ public class Explore {
         return "post/content";
     }
 
+    @GetMapping("edit")
+    public String editPost(@RequestParam Integer postId, Model model){
+
+        return "post/edit";
+    }
+
 }
