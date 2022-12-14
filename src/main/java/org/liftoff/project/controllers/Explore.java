@@ -39,6 +39,7 @@ public class Explore {
             Post post = result.get();
             model.addAttribute("header", post.getTitle() + " by " + post.getUser());
             model.addAttribute("postContent", post.getContent());
+            model.addAttribute("postId", post.getId());
         }
 
         return "post/content";
