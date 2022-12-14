@@ -34,6 +34,17 @@ public class PostController {
         model.addAttribute("categories", categoryRepository.findAll());
         return "post/index";
     }
+    @PostMapping("post")
+    public String processCreatePostForm(@ModelAttribute @Valid Post newPost,
+                                         Errors errors, Model model) {
+        if(errors.hasErrors()) {
+            model.addAttribute("title", "Create Post");
+            return "post/index";
+        }
+
+        postRepository.save(newPost);
+        return "post/content";
+    }
 //    @GetMapping
 //    public String displayPosts(@RequestParam(required = false) Integer categoryId, Model model) {
 //
@@ -62,16 +73,5 @@ public class PostController {
 //        return "post";
 //    }
 //
-//    @PostMapping()
-//    public String processCreatePostForm(@ModelAttribute @Valid Post newPost,
-//                                         Errors errors, Model model) {
-//        if(errors.hasErrors()) {
-//            model.addAttribute("title", "Create Post");
-//            return "post";
-//        }
-//
-//        postRepository.save(newPost);
-//        return "redirect:";
-//    }
 
 }
