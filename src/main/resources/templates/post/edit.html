@@ -24,20 +24,20 @@
             <thead class="thead-light">
                 <tr>
                     <th>Post Title:</th>
-                    <th><input type = "text" th:vale="${title}" th:field="${title}" /></th>
+                    <th><input size="60" type = "text" th:name="${title}" th:value="${title}"/></th>
                 </tr>
             </thead>
                 <tr>
                     <td>Post Content:</td>
-                    <td><input type = "text" th:value = "${postContent}" th:field = ${postContent}></td>
+                    <td><textarea th:name="${postContent}" th:text="${postContent}" rows=15 cols=80></textarea></td>
                 </tr>
         </table>
     </form>
 </div>
 
 <div class="forum-buttons">
-    <button class="button-55"><strong>Update Post</strong></button>
     <button class="button-55" ><a th:href ="'/explore/content?postId='+ ${postId}"><strong>Cancel</strong></a></button>
+    <input style = "font-weight: bold" class="button-55" type = "submit" value = "Update Post"/>
 
 
 </div>
