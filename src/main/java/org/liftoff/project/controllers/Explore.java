@@ -48,6 +48,17 @@ public class Explore {
     @GetMapping("edit")
     public String editPost(@RequestParam Integer postId, Model model){
 
+        Optional<Post> result = postRepository.findById(postId);
+
+        if (result.isEmpty()) {
+            model.addAttribute("title", "Post does not exist");
+        } else {
+            Post post = result.get();
+            model.addAttribute("title", post.getTitle());
+            model.addAttribute("postContent", post.getContent());
+            model.addAttribute("postId", post.getId());
+        }
+
         return "post/edit";
     }
 
