@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body class = "container" style="padding-bottom:75px;background:whitesmoke">
+
+<h1 style="text-align:center">Music Forum</h1>
+
+<div th:insert="fragments :: navbar"></div>
+
+
+<br>
+
+<div>
+    <h2 style = "color:red; text-align:center"><strong>Editing Post</strong></h2>
+
+    <form method="POST">
+        <table class = "table table-bordered" style="text-align:center" cellspacing = "1" width = "100%">
+            <thead class="thead-light">
+                <tr>
+                    <th>Post Title:</th>
+                    <th><input size="60" type = "text" name="title" th:value="${title}"/></th>
+                </tr>
+            </thead>
+                <tr>
+                    <td>Post Content:</td>
+                    <td><textarea name = "postContent" th:text="${postContent}" rows=15 cols=80></textarea></td>
+                </tr>
+        </table>
+
+        <div class="forum-buttons">
+            <button class="button-55" ><a th:href ="'/explore/content?postId='+ ${postId}"><strong>Cancel</strong></a></button>
+            <input style = "font-weight: bold" class="button-55" type = "submit" value = "Update Post"/>
+        </div>
+
+    </form>
+</div>
+
+
+
+</body>
+</html>

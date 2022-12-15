@@ -6,14 +6,12 @@ import org.liftoff.project.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/explore")
+@RequestMapping("explore")
 public class Explore {
 
     @Autowired
@@ -39,9 +37,40 @@ public class Explore {
             Post post = result.get();
             model.addAttribute("header", post.getTitle() + " by " + post.getUser());
             model.addAttribute("postContent", post.getContent());
+            model.addAttribute("postId", post.getId());
         }
 
         return "post/content";
+    }
+
+    @GetMapping("edit")
+    public String getEditPostPage(@RequestParam Integer postId, Model model){
+
+        Optional<Post> result = postRepository.findById(postId);
+
+        if (result.isEmpty()) {
+            model.addAttribute("title", "Post does not exist");
+        } else {
+            Post post = result.get();
+            model.addAttribute("title", post.getTitle());
+            model.addAttribute("postContent", post.getContent());
+            model.addAttribute("postId", post.getId());
+        }
+
+        return "post/edit";
+    }
+
+    @PostMapping("edit")
+    public String submitEditPostForm(@RequestParam Integer postId, String title, String postContent){
+
+        Optional<Post> result = postRepository.findById(postId);
+
+        Post postToUpdate = result.get();
+        postToUpdate.setTitle(title);
+        postToUpdate.setContent(postContent);
+        postRepository.save(postToUpdate);
+
+        return "redirect:";
     }
 
 }
