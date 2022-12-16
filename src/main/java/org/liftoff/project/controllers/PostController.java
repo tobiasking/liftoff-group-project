@@ -32,6 +32,7 @@ public class PostController {
         model.addAttribute("title", "Create Post");
         model.addAttribute(new Post());
         model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("users", userRepository.findAll());
         return "post/index";
     }
     @PostMapping("post")
