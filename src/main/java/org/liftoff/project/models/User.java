@@ -4,6 +4,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -92,6 +93,10 @@ public class User extends AbstractEntity{
     //Add a method to check password values
     public boolean matchedPassword(String password) {
         return encoder.matches(password, pwHash);
+    }
+
+    public List<User> getUser() {
+        return getUser();
     }
 
     @Override
