@@ -61,7 +61,7 @@ public class Explore {
     }
 
     @PostMapping("edit")
-    public String submitEditPostForm(@RequestParam Integer postId, String title, String postContent){
+    public String submitEditPostForm(@RequestParam Integer postId, String title, String postContent, Model model){
 
         Optional<Post> result = postRepository.findById(postId);
 
@@ -70,7 +70,8 @@ public class Explore {
         postToUpdate.setContent(postContent);
         postRepository.save(postToUpdate);
 
-        return "redirect:";
+
+        return "redirect:/explore/content?postId="+postId;
     }
 
 }
