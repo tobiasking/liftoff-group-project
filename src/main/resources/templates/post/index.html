@@ -18,6 +18,16 @@
 <form method="post">
 
 <div class="form-group">
+    <label>Username:
+        <select th:field="${post.user}">
+            <option th:each="user : ${users}"
+                    th:value="${user.id}"
+                    th:text="${user.userName}"></option>
+        </select>
+    </label>
+</div>
+
+<div class="form-group">
     <label>Post Category:
         <select th:field="${post.category}">
             <option th:each="category : ${categories}"
