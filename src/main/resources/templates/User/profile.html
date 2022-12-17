@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${User.userName}"></title>
+    <title>Profile Page</title>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/styles.css">
@@ -22,8 +22,8 @@
                     <div class="card-body text-center">
                         <img src="images/avatar.png" alt="avatar"
                              class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5
-                                class="my-3" th:text="'Username:' + '  ' + '@' + ${User.userName}"></h5>
+<!--                        <h5-->
+<!--                                class="my-3" th:text="'Username:' + '  ' + '@' + ${user.userName}"></h5>-->
                         <div class="forum-buttons">
                             <button class="button-55"><a href="#"><strong>Get notifications</strong></a></button>
                         </div>
@@ -38,7 +38,7 @@
                                 <p class="mb-0">Date of Birth</p>
                             </div>
                             <div class="col-md-9">
-                                <p class="text-muted mb-0" th:text="${User.dateOfBirth}"></p>
+                                <p class="text-muted mb-0" th:text="${user.dateOfBirth}"></p>
                             </div>
                         </div>
                         <hr>
@@ -47,7 +47,7 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-md-9">
-                                <p class="text-muted mb-0" th:text="${User.email}"></p>
+                                <p class="text-muted mb-0" th:text="${user.email}"></p>
                             </div>
                         </div>
                         <hr>
@@ -56,7 +56,7 @@
                                 <p class="mb-0">Phone Number</p>
                             </div>
                             <div class="col-md-9">
-                                <p class="text-muted mb-0" th:text="${User.phoneNumber}"></p>
+                                <p class="text-muted mb-0" th:text="${user.phoneNumber}"></p>
                             </div>
                         </div>
                     </div>
@@ -67,8 +67,7 @@
       <div class="container-xl mt-3 border">
           <p class="mb-4 text-center"><span class="text-primary">User Bio</span> </p>
           <p class="mb-1 text-center" style="font-size: .70">Edit your bio here!</p>
-      </div>
-  </div>
+ </div>
 </section>
 </body>
 </html>

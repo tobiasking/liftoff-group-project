@@ -8,23 +8,23 @@ import java.util.List;
 
 
 @Entity
-@Table(name="registration_form")
 public class User extends AbstractEntity{
 
-    @Column(name="name")
+
+
     private String userName;
 
-    @Column(name="user_password")
+
     private String pwHash;
 
 
-    @Column(name="date_of_birth")
+
     private Date dateOfBirth;
 
-    @Column(name="email")
+
     private String email;
 
-    @Column(name="phone_number")
+
     private String phoneNumber;
 
     //initialized variable for verifying and creating hashPW
@@ -95,9 +95,7 @@ public class User extends AbstractEntity{
         return encoder.matches(password, pwHash);
     }
 
-    public List<User> getUser() {
-        return getUser();
-    }
+
 
     @Override
     public String toString() {
