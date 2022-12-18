@@ -13,17 +13,17 @@
                 <section style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Forum</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                        <li class="breadcrumb-item active" aria-current="page" th:text="${user.userName} + ' Profile'"></li>
                     </ol>
       <div class="container">
         <div class="row">
             <div class="col-mb-4 d-flex">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="images/avatar.png" alt="avatar"
+                        <img src="../images/avatar.png" alt="avatar"
                              class="rounded-circle img-fluid" style="width: 150px;">
-<!--                        <h5-->
-<!--                                class="my-3" th:text="'Username:' + '  ' + '@' + ${user.userName}"></h5>-->
+                        <h5
+                                class="my-3" th:text="'Username:' + '  ' + '@' + ${user.userName}"></h5>
                         <div class="forum-buttons">
                             <button class="button-55"><a href="#"><strong>Get notifications</strong></a></button>
                         </div>

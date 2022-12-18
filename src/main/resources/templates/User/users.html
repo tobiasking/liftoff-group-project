@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class = "container" style="padding-bottom:75px;background:whitesmoke">
+
+<h1 style="text-align:center">Music Forum</h1>
+
+<div th:insert="fragments :: navbar"></div>
+<table class = "table table-bordered table-hover" style="text-align:center" cellspacing = "1" width = "100%">
+  <thead class="thead-light">
+  <tr>
+    <th>User ID</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+
+    <th:block th:each="user : ${user}">
+        <tr>
+            <td><a th:href = "'/profile/' + ${user.id}" th:text = ${user.userName}></a></td>
+            <td th:text = "${user.email}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

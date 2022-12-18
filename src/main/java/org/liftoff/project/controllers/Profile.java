@@ -21,11 +21,16 @@ public class Profile {
     @Autowired
     private UserRepository userRepository;
 
+    @GetMapping("/users")
+    public String getAllUsers (Model model) {
+        model.addAttribute("user", userRepository.findAll());
+        return "User/users";
+    }
     @GetMapping(value = "/profile/{id}")
     public String displayProfile(@PathVariable Integer id, Model model){
                 Optional<User> attributes = this.userRepository.findById(id);
 
-                model.addAttribute("user", attributes );
+                model.addAttribute("user", attributes.get() );
                 return "User/profile";
 
     }
