@@ -64,10 +64,10 @@
             </div>
         </div>
       </div>
-      <div class="container-xl mt-3 border">
+      <form method="post" action="" th:object="${User}"  class="text-center">
           <p class="mb-4 text-center"><span class="text-primary">User Bio</span> </p>
-          <p class="mb-1 text-center" style="font-size: .70" th:text="${user.bio}"></p>
- </div>
-</section>
+          <p class="mb-4 text-center" style="font-size: .70"><input th:field="${user.bio}" value="bio" class="form-control"></p>
+          <input type="submit" class="btn btn-primary" value="Save Changes">
+      </form>
 </body>
 </html>

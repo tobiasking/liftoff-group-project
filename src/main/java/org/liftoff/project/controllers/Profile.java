@@ -6,6 +6,7 @@ import org.liftoff.project.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.yaml.snakeyaml.events.Event;
 
@@ -22,10 +23,18 @@ public class Profile {
     private UserRepository userRepository;
 
     @GetMapping("/users")
-    public String getAllUsers (Model model) {
+    public String getAllUsers(Model model) {
         model.addAttribute("user", userRepository.findAll());
         return "User/users";
     }
+
+    @RequestMapping(method=RequestMethod.POST, value="Save Changes")
+    public String updateBio(@ModelAttribute("bio") User user, ModelMap model) {
+            model.addAttribute("bio", user);
+        return "success";
+    }
+
+
     @GetMapping(value = "/profile/{id}")
     public String displayProfile(@PathVariable Integer id, Model model){
                 Optional<User> attributes = this.userRepository.findById(id);
@@ -34,4 +43,5 @@ public class Profile {
                 return "User/profile";
 
     }
+
 }
