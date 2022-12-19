@@ -32,8 +32,12 @@ public class Profile {
     }
 
     @RequestMapping(value = "/update-bio", method = RequestMethod.POST)
-    public String updateBio(@ModelAttribute User user) {
-        userRepository.save(user);
+    public String updateBio(@RequestParam String bio, Integer id, Model model) {
+
+        Optional<User> userBio = this.userRepository.findById(id);
+        User updateBio = userBio.get();
+        updateBio.setBio(bio);
+        userRepository.save(updateBio);
         return "User/success";
     }
 

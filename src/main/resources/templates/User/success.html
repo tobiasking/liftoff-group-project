@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<section style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <div th:insert="fragments :: navbar"></div>
+    <section style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Forum</a></li>
+        </ol>
+        <body>
+        <div class="col-md-12" align="center">
+            <br />
+            <div class="alert alert-success col-md-8" role="alert">
+<!--                <p th:text="${successMsg}" />-->
+                <p>User Updated Successfully!</p>
+            </div>
+        </div>
+        </body>
+    </section>
+</section>
+</body>
+</html>

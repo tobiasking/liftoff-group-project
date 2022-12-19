@@ -14,8 +14,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
    User findByUserName(String username);
 
-   //update bio
-   User findByBio(String bio);
 
 
 }
