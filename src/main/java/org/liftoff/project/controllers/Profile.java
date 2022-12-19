@@ -7,14 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.yaml.snakeyaml.events.Event;
 
 import javax.persistence.Id;
+import javax.validation.Valid;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.function.BinaryOperator;
 
 @Controller
 public class Profile {
@@ -28,10 +31,10 @@ public class Profile {
         return "User/users";
     }
 
-    @RequestMapping(method=RequestMethod.POST, value="Save Changes")
-    public String updateBio(@ModelAttribute("bio") User user, ModelMap model) {
-            model.addAttribute("bio", user);
-        return "success";
+    @RequestMapping(value = "/update-bio", method = RequestMethod.POST)
+    public String updateBio(@ModelAttribute("bio") String bio) {
+        userRepository.save(this.userRepository.findByBio(bio));
+        return "User/success";
     }
 
 

@@ -64,10 +64,18 @@
             </div>
         </div>
       </div>
-      <form method="post" action="" th:object="${User}"  class="text-center">
-          <p class="mb-4 text-center"><span class="text-primary">User Bio</span> </p>
-          <p class="mb-4 text-center" style="font-size: .70"><input th:field="${user.bio}" value="bio" class="form-control"></p>
-          <input type="submit" class="btn btn-primary" value="Save Changes">
-      </form>
+                    <form action="#" th:action="@{/update-bio}" th:object="${user}" method="post">
+                    <div class="form-group text-center">
+                        <label for="bio">Bio:</label>
+                        <input type="text" class="form-control" id="bio" th:field="${user.bio}" />
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                    </form>
+<!--      <form method="post" action="" th:object="${User}"  class="text-center" value="bio">-->
+<!--          <p class="mb-4 text-center"><span class="text-primary">User Bio</span> </p>-->
+<!--          <p class="mb-4 text-center" style="font-size: .70"><input th:field="${user.bio}" class="form-control"></p>-->
+<!--      </form>-->
 </body>
 </html>
