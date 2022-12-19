@@ -1,23 +1,14 @@
 package org.liftoff.project.controllers;
 
 import org.liftoff.project.data.UserRepository;
-import org.liftoff.project.models.Post;
 import org.liftoff.project.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.yaml.snakeyaml.events.Event;
 
-import javax.persistence.Id;
-import javax.validation.Valid;
-import java.util.Collections;
-import java.util.Map;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.BinaryOperator;
+
 
 @Controller
 public class Profile {
