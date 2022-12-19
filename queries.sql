@@ -1,12 +1,12 @@
+insert into user  values (2, 'I like to listen to rock music. Its my favorite type of music. I dont really have a favorite band, but Im into Muse, Radiohead, and Pink Floyd.', '1998-01-13','test@test.com','1000000000','test123','Test');
+insert into user  values (3, 'I like to rap and I like to make hiphop music. My favorite artists are Kanye West, Chance the Rapper, and 2 Chainz. I think that hiphop is an important genre of music because it speaks to the heart and its always evolving.', '2002-12-01','test2@test.com','1000000001','test234','Test2');
+insert into user  values (4, 'Country music is where I find my happy place. Tune in for all the down-home goodness – #countrymusic #tastematters', '2005-01-19', 'test3@test.com', '1000000002', "test345", 'Test3');
 insert into category values (1, 'hip-hop');
 insert into category values (2, 'rock');
 insert into category values (3, 'glitch');
 insert into category values (4, 'pop');
 insert into category values (5, 'jazz');
 insert into category values (6, 'classical');
-insert into registration_form values (1, '1998-01-13', 'test@test.com', 'test123', 1000000000, 'Test');
-insert into registration_form values (2, '2002-12-01', 'test2@test.com', 'test234', 1000000001, 'Test2');
-insert into registration_form values (3, '2005-01-19', 'test3@test.com', 'test345', 1000000002, 'Test3');
-insert into post values (1, 'Why in the world is there 4 vinyl versions of Taylor Swifts latest LP?', 'For why',4, 1);
-insert into post values (2, 'I miss the old danny brown', 'What happened?', 5, 2);
-insert into post values (3, 'Beethovens 5th is such a banger. Seriously. So underrated', 'the GOAT', 6, 3);
+insert into post values (3, 'Why in the world is there 4 vinyl versions of Taylor Swifts latest LP?', 'For why',4, 2);
+insert into post values (4, 'I miss the old danny brown', 'What happened?', 5, 3);
+insert into post values (5, 'Beethovens 5th is such a banger. Seriously. So underrated', 'the GOAT', 6, 4);

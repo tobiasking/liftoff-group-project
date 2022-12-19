@@ -1,28 +1,50 @@
-package org.liftoff.project.Controllers;
+package org.liftoff.project.controllers;
 
+import org.liftoff.project.data.UserRepository;
+import org.liftoff.project.models.Post;
 import org.liftoff.project.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.events.Event;
+
+import javax.persistence.Id;
+import javax.validation.Valid;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.BinaryOperator;
 
 @Controller
 public class Profile {
 
+    @Autowired
+    private UserRepository userRepository;
 
-    @RequestMapping(value="/profile")
-    public String profile(Model model){
-
-        model.addAttribute("User",  new User("Test", "test123", null,  "test@test.com", "121233123123"));
-        return "profile";
+    @GetMapping("/users")
+    public String getAllUsers(Model model) {
+        model.addAttribute("user", userRepository.findAll());
+        return "User/users";
     }
-//    ----!---- Maybe something like this ----!----
-//    @GetMapping("/profile")
-//     public string profile (Authentication authentication {
-//     if (authentication = null) {
-//    return "redirect:/login"
-//    } else {
-//    Profile profile = profileService.findByAuthentication(authentication);
-//            return "redirect:/id/" + profile.getPath();
-//        }
-//    }
+
+    @RequestMapping(value = "/update-bio", method = RequestMethod.POST)
+    public String updateBio(@ModelAttribute User user) {
+        userRepository.save(user);
+        return "User/success";
+    }
+
+
+    @GetMapping(value = "/profile/{id}")
+    public String displayProfile(@PathVariable Integer id, Model model){
+                Optional<User> attributes = this.userRepository.findById(id);
+
+                model.addAttribute("user", attributes.get() );
+                return "User/profile";
+
+    }
+
 }

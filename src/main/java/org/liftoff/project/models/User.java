@@ -4,38 +4,42 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
-@Table(name="registration_form")
 public class User extends AbstractEntity{
 
-    @Column(name="name")
+
+
     private String userName;
 
-    @Column(name="user_password")
+
     private String pwHash;
 
 
-    @Column(name="date_of_birth")
+
     private Date dateOfBirth;
 
-    @Column(name="email")
+
     private String email;
 
-    @Column(name="phone_number")
+
     private String phoneNumber;
+
+    private String bio;
 
     //initialized variable for verifying and creating hashPW
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public User(String userName, String password, Date dateOfBirth, String email, String phoneNumber) {
+    public User(String userName, String password, Date dateOfBirth, String email, String phoneNumber, String bio) {
         this.userName = userName;
         // method to encode the PW field
         this.pwHash = encoder.encode(password);
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.bio = bio;
     }
 
     public User() {
@@ -92,6 +96,14 @@ public class User extends AbstractEntity{
     //Add a method to check password values
     public boolean matchedPassword(String password) {
         return encoder.matches(password, pwHash);
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     @Override
