@@ -108,25 +108,22 @@ public class Authentication {
         if (theUser == null) {
             errors.rejectValue("username", "user.invalid", "That username does not exist");
             model.addAttribute("title", "Log In");
-        }else {
+        return "login";
+        }
 
-            String password = loginDTO.getPassword();
+        String password = loginDTO.getPassword();
 
+        // Password verification
 
-            // Password verification
-
-            if (!theUser.isMatchingPassword(password)) {
+        if (!theUser.isMatchingPassword(password)) {
                 errors.rejectValue("password", "password.invalid", "Invalid password");
                 model.addAttribute("title", "Log In");
-
-                setUserInSession(request.getSession(), theUser);
-
                 return "login";
             }
 
-            return "index";
-        }
-        return "login";
+        setUserInSession(request.getSession(), theUser);
+
+        return "index";
     }
 
 
