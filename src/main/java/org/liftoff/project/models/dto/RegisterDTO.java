@@ -1,21 +1,22 @@
 package org.liftoff.project.models.dto;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.sql.Date;
+
 
 public class RegisterDTO extends LoginDTO {
 
     //variables
 
-/*
-    @NotNull
     private Date dateOfBirth;
 
     @NotNull
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     @NotNull
-    private Integer email;
-*/
+    private String email;
+
     @NotBlank
     private String verifyPassword;
 
@@ -27,20 +28,20 @@ public class RegisterDTO extends LoginDTO {
 
         this.verifyPassword = verifyPassword;
     }
-/*
-    public Integer getEmail() {
+
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Integer email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -50,6 +51,6 @@ public class RegisterDTO extends LoginDTO {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }*/
+    }
 
 }

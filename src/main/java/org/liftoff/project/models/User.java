@@ -3,7 +3,7 @@ package org.liftoff.project.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import java.sql.Date;
 
 
 @Entity
