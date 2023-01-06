@@ -26,7 +26,71 @@ public class Authentication {
 
     private static final String userSessionKey = "user";
 
+    public User getUserFromSession (HttpSession session){
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        if (userId == null) {
+            return null;
+        }
 
+        Optional<User> theUser = userRepository.findById(userId);
+
+        // conditional
+        if (theUser.isEmpty()) {
+            return null;
+        }
+        return theUser.get();
+    }
+
+    private void setUserInSession(HttpSession session, User user) {
+        session.setAttribute(userSessionKey, user.getId());
+    }
+
+    @GetMapping("/register")
+    public String displayRegistrationForm(Model model){
+        model.addAttribute(new RegisterDTO());
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String processRegistrationForm(@ModelAttribute @Valid RegisterDTO registerDTO,
+                                   Errors errors, HttpServletRequest request,
+                                   Model model){
+    if (errors.hasErrors()){
+        return "register";
+    }
+
+    User theUser = userRepository.findByUserName(registerDTO.getUsername());
+
+    if (theUser != null) {
+        errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists.");
+        return "register";
+    }
+
+    String password = registerDTO.getPassword();
+    String verifyPassword = registerDTO.getVerifyPassword();
+
+    if (!password.equals(verifyPassword)) {
+        errors.rejectValue("password", "passwords.mismatch", "Passwords do not match.");
+        return "register";
+    }
+
+    User newUser = new User(registerDTO.getUsername(),registerDTO.getPassword());
+    userRepository.save(newUser);
+    setUserInSession(request.getSession(), newUser);
+
+    return "redirect:";
+
+    }
+
+
+
+
+    @GetMapping(value = "/login")
+    public String displayLoginForm(Model model) {
+        model.addAttribute(new LoginDTO());
+        model.addAttribute("title", "Log In");
+        return "login";
+    }
 
     @PostMapping(value = "/login")
     public String processLoginForm(@ModelAttribute @Valid LoginDTO loginDTO,
@@ -61,34 +125,6 @@ public class Authentication {
 
             return "index";
         }
-        return "login";
-    }
-
-    private void setUserInSession(HttpSession session, User theUser) {
-    }
-
-
-    public User getUserFromSession (HttpSession session, User user){
-        Integer userId = (Integer) session.getAttribute(userSessionKey);
-        if (userId == null) {
-            return null;
-        }
-
-        Optional<User> theUser = userRepository.findById(userId);
-
-        // conditional
-        if (theUser.isEmpty()) {
-            return null;
-        }
-        return theUser.get();
-    }
-
-
-
-    @GetMapping(value = "/login")
-    public String displayLoginForm(Model model) {
-        model.addAttribute(new LoginDTO());
-        model.addAttribute("title", "Log In");
         return "login";
     }
 

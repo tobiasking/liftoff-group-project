@@ -1,11 +1,12 @@
 package org.liftoff.project.models.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-public class RegisterDTO extends LoginDTO{
+public class RegisterDTO extends LoginDTO {
 
     //variables
 
@@ -19,6 +20,31 @@ public class RegisterDTO extends LoginDTO{
     @NotBlank
     @Size(min = 10, max = 20, message = "Invalid . Must be between 10 and 20 characters.")
     private Integer phoneNumber;
+
+    @NotNull
+    @NotBlank
+    @Email
+    private Integer email;
+
+
+    private String verifyPassword;
+
+    public String getVerifyPassword() {
+        return verifyPassword;
+    }
+    //method
+    public void setVerifyPassword(String verifyPassword) {
+
+        this.verifyPassword = verifyPassword;
+    }
+
+    public Integer getEmail() {
+        return email;
+    }
+
+    public void setEmail(Integer email) {
+        this.email = email;
+    }
 
     public Integer getPhoneNumber() {
         return phoneNumber;
@@ -34,17 +60,6 @@ public class RegisterDTO extends LoginDTO{
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }
-
-    private String verifyPassword;
-    public String getVerifyPassword() {
-
-        return verifyPassword;
-    }
-    //method
-    public void setVerifyPassword(String verifyPassword) {
-
-        this.verifyPassword = verifyPassword;
     }
 
 }

@@ -1,4 +1,4 @@
-package org.liftoff.project.Controllers;
+package org.liftoff.project.controllers;
 
 import org.liftoff.project.models.User;
 import org.springframework.stereotype.Controller;
