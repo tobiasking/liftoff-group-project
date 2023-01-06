@@ -11,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("users")
 public class Authentication {
 
     //create a UserRepository instance to handle User model objects with the controller
@@ -45,13 +47,13 @@ public class Authentication {
         session.setAttribute(userSessionKey, user.getId());
     }
 
-    @GetMapping("/register")
+   @GetMapping(value = "/register")
     public String displayRegistrationForm(Model model){
         model.addAttribute(new RegisterDTO());
         return "register";
     }
 
-    @PostMapping("/register")
+    @PostMapping(value = "/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterDTO registerDTO,
                                    Errors errors, HttpServletRequest request,
                                    Model model){
@@ -78,10 +80,9 @@ public class Authentication {
     userRepository.save(newUser);
     setUserInSession(request.getSession(), newUser);
 
-    return "redirect:";
+    return "index";
 
     }
-
 
 
 
