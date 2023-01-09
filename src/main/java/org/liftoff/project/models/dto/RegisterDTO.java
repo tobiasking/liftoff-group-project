@@ -2,29 +2,48 @@ package org.liftoff.project.models.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
+import java.sql.Date;
 
-public class RegisterDTO extends LoginDTO{
+
+public class RegisterDTO extends LoginDTO {
 
     //variables
 
-
-    @NotNull
-    @NotBlank
-    @Size( max = 4, message = "Invalid date of birth Must be 4 characters.")
     private Date dateOfBirth;
 
     @NotNull
-    @NotBlank
-    @Size(min = 10, max = 20, message = "Invalid . Must be between 10 and 20 characters.")
-    private Integer phoneNumber;
+    private String phoneNumber;
 
-    public Integer getPhoneNumber() {
+    @NotNull
+    private String email;
+
+    @NotBlank
+    private String verifyPassword;
+
+    private String bio;
+
+    public String getVerifyPassword() {
+        return verifyPassword;
+    }
+    //method
+    public void setVerifyPassword(String verifyPassword) {
+
+        this.verifyPassword = verifyPassword;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -36,15 +55,11 @@ public class RegisterDTO extends LoginDTO{
         this.dateOfBirth = dateOfBirth;
     }
 
-    private String verifyPassword;
-    public String getVerifyPassword() {
-
-        return verifyPassword;
-    }
-    //method
-    public void setVerifyPassword(String verifyPassword) {
-
-        this.verifyPassword = verifyPassword;
+    public String getBio() {
+        return bio;
     }
 
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
 }

@@ -2,27 +2,20 @@ package org.liftoff.project.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import java.sql.Date;
 
 
 @Entity
 public class User extends AbstractEntity{
 
-
-
     private String userName;
-
 
     private String pwHash;
 
-
-
     private Date dateOfBirth;
 
-
     private String email;
-
 
     private String phoneNumber;
 
@@ -30,6 +23,11 @@ public class User extends AbstractEntity{
 
     //initialized variable for verifying and creating hashPW
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    public User(String userName, String password){
+        this.userName = userName;
+        this.pwHash = encoder.encode(password);
+    }
 
     public User(String userName, String password, Date dateOfBirth, String email, String phoneNumber, String bio) {
         this.userName = userName;
