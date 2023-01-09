@@ -20,6 +20,8 @@ public class RegisterDTO extends LoginDTO {
     @NotBlank
     private String verifyPassword;
 
+    private String bio;
+
     public String getVerifyPassword() {
         return verifyPassword;
     }
@@ -53,4 +55,11 @@ public class RegisterDTO extends LoginDTO {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
 }

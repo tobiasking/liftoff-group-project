@@ -76,7 +76,7 @@ public class Authentication {
         return "register";
     }
 
-    User newUser = new User(registerDTO.getUsername(),registerDTO.getPassword(),registerDTO.getDateOfBirth(),registerDTO.getEmail(),registerDTO.getPhoneNumber());
+    User newUser = new User(registerDTO.getUsername(),registerDTO.getPassword(),registerDTO.getDateOfBirth(),registerDTO.getEmail(),registerDTO.getPhoneNumber(), registerDTO.getBio());
     userRepository.save(newUser);
     setUserInSession(request.getSession(), newUser);
 
