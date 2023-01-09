@@ -19,6 +19,8 @@ public class User extends AbstractEntity{
 
     private String phoneNumber;
 
+    private String bio;
+
     //initialized variable for verifying and creating hashPW
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -27,24 +29,25 @@ public class User extends AbstractEntity{
         this.pwHash = encoder.encode(password);
     }
 
-    public User(String userName, String password, Date dateOfBirth, String email, String phoneNumber) {
+    public User(String userName, String password, Date dateOfBirth, String email, String phoneNumber, String bio) {
         this.userName = userName;
         // method to encode the PW field
         this.pwHash = encoder.encode(password);
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.bio = bio;
     }
 
     public User() {
     }
 
-/*
+
     //constructor that stores new user object to the DB
     public User(Object registerDTOUsername, Object registerDTOPassword) {
 
     }
-*/
+
 
     public String getUserName() {
         return userName;
@@ -90,6 +93,14 @@ public class User extends AbstractEntity{
     //Add a method to check password values
     public boolean matchedPassword(String password) {
         return encoder.matches(password, pwHash);
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     @Override
