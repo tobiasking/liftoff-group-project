@@ -17,7 +17,7 @@
 
     </style>
 </head>
-<body class = "container" style="padding-bottom:75px;background:whitesmoke">
+<body class="container" style="padding-bottom:75px;background:whitesmoke">
 <div class="container">
 
     <h1 style="text-align: center">Music Forum</h1>
@@ -25,27 +25,9 @@
     <div th:insert="fragments :: navbar"></div>
     <br>
     <p style="text-align: center">Register for your very own account!</p>
-    <!--        <div class="form-group">-->
-    <!--            <div class="row">-->
-    <!--                <div class="form-group">-->
-    <!--                    <input type="text" class="form-control" name="username" placeholder="Username">-->
-    <!--                </div>-->
-    <!--                <div class="form-group">-->
-    <!--                    <input type="email" class="form-control" name="email" placeholder="Email Address">-->
-    <!--                </div>-->
-    <!--                <div class="form-group">-->
-    <!--                    <input type="password" class="form-control" name="password" placeholder="Password">-->
-    <!--                </div>-->
-    <!--                <div class="form-group">-->
-    <!--                    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">-->
-    <!--                    </div>-->
 
-
-
-    <!--              user form -->
-
-    <form class="form-signup"  th:action="@{/register}"  method="post" th:object="${userRegister}">
-
+    <!-- User registration form -->
+    <form class="form-signup" th:action="@{/register}" method="post" th:object="${userRegister}">
         <div class="form-group">
             <label>Username
                 <input class="form-control" type="text" th:field="*{userName}">
@@ -65,27 +47,20 @@
         </div>
 
         <div class="form-group">
-            <label>date of birth
+            <label>Date of birth
                 <input class="form-control" type="date" th:field="*{dateOfBirth}">
             </label>
         </div>
 
         <div class="form-group">
             <label>Password
-                <input class="form-control" type="text" th:field="*{password}">
+                <input class="form-control" type="password" th:field="*{password}">
             </label>
         </div>
-
-        <!--                    <div class="form-group">-->
-        <!--                        <label>Confirm Password-->
-        <!--                            <input class="form-control" type="password" >-->
-        <!--                        </label>-->
-        <!--                    </div>-->
 
         <input type="submit" class="btn btn-primary" name="" value="Sign Up">
         <p>Already have an account? <a href="/login">Login here.</a></p>
     </form>
 </div>
-
 </body>
 </html>

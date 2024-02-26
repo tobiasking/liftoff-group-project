@@ -12,12 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("categories")
+@RequestMapping("/")
 public class CategoryController {
 
     @Autowired
@@ -25,9 +27,17 @@ public class CategoryController {
 
     @GetMapping
     public String displayAllCategories(Model model) {
+        System.out.println("Inside displayAllCategories method");
+        Iterable<Category> categoryIterable = categoryRepository.findAll();
+        List<Category> categories = new ArrayList<>();
+        categoryIterable.forEach(categories::add);
+        System.out.println("Number of categories: " + categories.size());
         model.addAttribute("title", "All Categories");
-        model.addAttribute("categories", categoryRepository.findAll());
-        return "explore";
+        model.addAttribute("categories", categories);
+        return "index";
     }
-
 }
+
+
+
+
