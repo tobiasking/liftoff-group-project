@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -68,6 +69,10 @@ public class Post extends AbstractEntity{
     public List<Post> getPosts() {
         return getPosts();
     }
+
+    @OneToMany(mappedBy = "category")
+    private final List<Post> posts = new ArrayList<>();
+
     @Override
     public String toString() {
         return title;

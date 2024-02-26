@@ -30,10 +30,18 @@
 
     <div class="forum-container">
         <div th:each="category : ${categories}" class="category">
-            <h3><a th:href="@{'/category/' + ${category.id}}" th:text="${category.categoryName}"></a></h3>
-            <p>latest posts will go here</p>
+            <h3>
+                <a th:href="@{'/category/' + ${category.id}}" th:text="${category.categoryName}"></a>
+            </h3>
+            <p>
+                <a th:if="${not #lists.isEmpty(category.posts)}"
+                   th:href="@{'/explore/content?postId=' + ${category.posts[0].id}}"
+                   th:text="${category.posts[0].title}">
+                </a>
+            </p>
         </div>
     </div>
+
 
 
 </div>
