@@ -1,8 +1,11 @@
 package org.liftoff.project.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.util.Date;
 
 
@@ -18,6 +21,9 @@ public class User extends AbstractEntity{
 
 
 
+    @Past(message = "Date of birth must be in the past")
+    @NotNull(message = "Date of birth is required")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
 
