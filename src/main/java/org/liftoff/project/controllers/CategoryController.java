@@ -19,11 +19,9 @@ public class CategoryController {
 
     @GetMapping
     public String displayAllCategories(Model model) {
-        System.out.println("Inside displayAllCategories method");
         Iterable<Category> categoryIterable = categoryRepository.findAll();
         List<Category> categories = new ArrayList<>();
         categoryIterable.forEach(categories::add);
-        System.out.println("Number of categories: " + categories.size());
         model.addAttribute("title", "All Categories");
         model.addAttribute("categories", categories);
         return "index";
