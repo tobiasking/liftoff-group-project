@@ -1,21 +1,34 @@
 package org.liftoff.project.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import java.sql.Date;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import java.util.Date;
 
 
 @Entity
 public class User extends AbstractEntity{
 
+
+
     private String userName;
+
 
     private String pwHash;
 
+
+
+    @Past(message = "Date of birth must be in the past")
+    @NotNull(message = "Date of birth is required")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
+
     private String email;
+
 
     private String phoneNumber;
 
@@ -23,11 +36,6 @@ public class User extends AbstractEntity{
 
     //initialized variable for verifying and creating hashPW
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-    public User(String userName, String password){
-        this.userName = userName;
-        this.pwHash = encoder.encode(password);
-    }
 
     public User(String userName, String password, Date dateOfBirth, String email, String phoneNumber, String bio) {
         this.userName = userName;
@@ -112,5 +120,3 @@ public class User extends AbstractEntity{
     public boolean isMatchingPassword(String password) {
         return true;
     }
-}
-
