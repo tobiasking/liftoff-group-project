@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
-<body class = "container" style="padding-bottom:75px;background:whitesmoke">
+<body class="container" style="padding-bottom: 75px; background: whitesmoke">
 
-
-<h1 style="text-align:center">Music Forum</h1>
+<h1 style="text-align: center">Music Forum</h1>
 
 <div th:insert="fragments :: navbar"></div>
 
 <div id="Main">
 
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <nav style="--bs-breadcrumb-divider: '>';"
+         aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Forum</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Category 1</li>
+            <li class="breadcrumb-item active" aria-current="page">Categories</li>
         </ol>
     </nav>
     <div class="forum-buttons">
@@ -29,22 +29,22 @@
     <br>
 
     <div class="forum-container">
-        <div class="category">
-            <h3><a href="#">Category 1</a> </h3>
-            <p>latest posts will go here</p>
-        </div>
-        <div class="category">
-            <h3><a href="#">Category 2</a> </h3>
-            <p>latest posts will go here</p>
-        </div>
-        <div class="category">
-            <h3><a href="#">Category 3</a> </h3>
-            <p>latest posts will go here</p>
+        <div th:each="category : ${categories}" class="category">
+            <h3>
+                <a th:href="@{'/category/' + ${category.id}}" th:text="${category.categoryName}"></a>
+            </h3>
+            <p>
+                <a th:if="${not #lists.isEmpty(category.posts)}"
+                   th:href="@{'/explore/content?postId=' + ${category.posts[0].id}}"
+                   th:text="${category.posts[0].title}">
+                </a>
+            </p>
         </div>
     </div>
 
-</div>
+
 
 </div>
+
 </body>
 </html>
