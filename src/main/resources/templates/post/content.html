@@ -31,6 +31,13 @@
         <tr>
             <td style="color:blue"><a th:href ="'/explore/edit?postId='+ ${postId}"><strong>Edit this Post</strong></a></td>
         </tr>
+        <tr>
+            <td style="color: red">
+                <a th:href="'/explore/delete?postId=' + ${postId}" onclick="return confirm('Are you sure you want to delete this post?');">
+                    <strong>Delete this Post</strong>
+                </a>
+            </td>
+        </tr>
     </table>
 </div>
 

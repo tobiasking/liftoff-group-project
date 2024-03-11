@@ -73,5 +73,19 @@ public class Explore {
 
         return "redirect:/explore/content?postId="+postId;
     }
+    @GetMapping("delete")
+    public String deletePost(@RequestParam Integer postId) {
+        // Retrieve the post by id
+        Optional<Post> result = postRepository.findById(postId);
 
+        // Check if the post exists
+        if (result.isPresent()) {
+            // Delete the post from the database
+            postRepository.deleteById(postId);
+        }
+
+        // Redirect to the explore page after deleting
+        return "redirect:/explore";
+    }
 }
+
